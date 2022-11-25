@@ -17,10 +17,9 @@ def is_supported_chain(chain_to_compare):
             return True
     return False
 
-def is_new_router(new_router, chain_id):
-    for router in ids_to_routers[chain_id]:
-        if router == new_router:
-            return False
+def is_new_router(pending_router, chain_id):
+    if pending_router in ids_to_routers[chain_id]:
+        return False
     return True
 
 for i in range(len(chain_ids)):
