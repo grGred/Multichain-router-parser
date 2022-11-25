@@ -1,8 +1,9 @@
 from itertools import chain
 import requests
 API_LINK = "https://bridgeapi.anyswap.exchange/v4/tokenlistv4/"
-chain_ids = [1, 56, 137, 43114, 250, 1285, 42161, 10, 1284, 100, 25, 122, 66, 42220, 288, 40, 2222, 32520]
-ANY_METHODS = ['anySwapOut(anytoken,toAddress,amount,toChainID)', 'anySwapOutUnderlying(anytoken,toAddress,amount,toChainID)', 'anySwapOutNative(anytoken,toAddress,toChainID,{value: amount})']
+chain_ids = [1, 56, 137, 43114, 250, 1285, 42161, 10, 1284, 100, 25, 122, 66, 42220, 288, 40, 2222, 32520, 1088, 42262, 8217, 106, 57, 53935]
+# ANY_METHODS = ['anySwapOut(anytoken,toAddress,amount,toChainID)', 'anySwapOutUnderlying(anytoken,toAddress,amount,toChainID)', 'anySwapOutNative(anytoken,toAddress,toChainID,{value: amount})']
+ANY_METHODS = ['Swapout(amount,toAddress)']
 ids_to_routers = {}
 routers = []
 
@@ -38,12 +39,11 @@ for id in chain_ids:
                         pending_router = vals.get('router')
                         if is_new_router(pending_router, str(id)):
                             ids_to_routers[str(id)].append(pending_router)
-
+lendsand = 0
 for chain in chain_ids:
     print(chain)
     print(ids_to_routers[str(chain)])
+    lendsand += len(ids_to_routers[str(chain)])
     print('---------------------------------')
-    print()
-
     
-
+print(lendsand)
